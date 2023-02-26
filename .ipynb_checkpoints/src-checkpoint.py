@@ -12,18 +12,11 @@ nltk.download('vader_lexicon')
 load_dotenv()
 password = os.getenv("sql_pass")
 
-#creating db and loading in the csv 
+
 def load_csv_to_mysql(db):
     password = os.environ.get('sql_pass')
-    
-    connection = f'mysql+pymysql://root:{password}@localhost/'
-    
-    engine = alch.create_engine(connection)
-    
-    engine.execute(f"CREATE DATABASE IF NOT EXISTS {db}")
     connection = f'mysql+pymysql://root:{password}@localhost/{db}'
     engine = alch.create_engine(connection)
-    
     df = pd.read_csv('data/Game_of_Thrones_Script.csv')
     df.to_sql(name='script', con=engine, if_exists='replace', index=False)
 
