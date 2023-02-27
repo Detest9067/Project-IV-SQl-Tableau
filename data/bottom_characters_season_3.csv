@@ -1,11 +1,11 @@
-name,avg_polarity,num_sentences
-kraznys mo nakloz,-0.461825,8
-rickard karstark,-0.29265263157894733,19
-walder frey,-0.23840999999999996,10
-kraznys,-0.22422222222222224,18
-dolorous edd,-0.187975,8
-theon greyjoy,-0.09872599999999998,50
-stannis baratheon,-0.09457903225806454,62
-mero,-0.09452500000000003,20
-arya stark,-0.08352980769230768,104
-daario,-0.08206571428571428,35
+season,name,avg_polarity,num_sentences
+season_3,kraznys mo nakloz,-0.461825,8
+season_3,rickard karstark,-0.29265263157894733,19
+season_3,walder frey,-0.23840999999999996,10
+season_3,kraznys,-0.22422222222222224,18
+season_3,dolorous edd,-0.187975,8
+season_3,theon greyjoy,-0.09872599999999998,50
+season_3,stannis baratheon,-0.09457903225806454,62
+season_3,mero,-0.09452500000000003,20
+season_3,arya stark,-0.08352980769230768,104
+season_3,daario,-0.08206571428571428,35

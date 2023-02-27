@@ -1,8 +1,11 @@
 import pymysql
 import sqlalchemy as alch
 import pandas as pd
+import glob
 import os 
 from dotenv import load_dotenv
+import requests
+import json
 import logging
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -24,7 +27,7 @@ def load_csv_to_mysql(db):
     connection = f'mysql+pymysql://root:{password}@localhost/{db}'
     engine = alch.create_engine(connection)
     
-    df = pd.read_csv('data/Game_of_Thrones_Script.csv')
+    df = pd.read_csv('script/Game_of_Thrones_Script.csv')
     df.to_sql(name='script', con=engine, if_exists='replace', index=False)
 
 db = 'Game_of_Thrones'
@@ -61,10 +64,10 @@ def get_average_polarity(season):
     grouped = df.groupby("name").agg({"polarity_score": "mean"}).reset_index()
     return grouped
 
-#extracting the positive characters with more than 5 lines
+#extracting top chacters with more than 5 lines
 def top_characters(season):
     with engine.connect() as conn:
-        query = f"SELECT name, AVG(polarity_score) as avg_polarity, COUNT(sentence) as num_sentences FROM {season} GROUP BY name HAVING num_sentences > 5 ORDER BY avg_polarity DESC LIMIT 10;"
+        query = f"SELECT '{season}' as season, name, AVG(polarity_score) as avg_polarity, COUNT(sentence) as num_sentences FROM {season} GROUP BY name HAVING num_sentences > 5 ORDER BY avg_polarity DESC LIMIT 10;"
         top_df = pd.read_sql_query(query, conn)
         top_df.to_csv(f"data/top_characters_{season}.csv", index=False)
         return top_df
@@ -72,7 +75,43 @@ def top_characters(season):
 #extracting the negative characters with more than 5 lines
 def bottom_characters(season):
     with engine.connect() as conn:
-        query = f"SELECT name, AVG(polarity_score) as avg_polarity, COUNT(sentence) as num_sentences FROM {season} GROUP BY name HAVING num_sentences > 5 ORDER BY avg_polarity ASC LIMIT 10;"
+        query = f"SELECT '{season}' as season, name, AVG(polarity_score) as avg_polarity, COUNT(sentence) as num_sentences FROM {season} GROUP BY name HAVING num_sentences > 5 ORDER BY avg_polarity ASC LIMIT 10;"
         bottom_df = pd.read_sql_query(query, conn)
         bottom_df.to_csv(f"data/bottom_characters_{season}.csv", index=False)
         return bottom_df
+
+
+def combine_csvs(folder_path, output_file, exclude_file=None):
+    
+    csv_files = glob.glob(f'{folder_path}/*.csv')
+    
+    dataframes = []
+    for file in csv_files:
+        
+        df = pd.read_csv(file)
+        dataframes.append(df)
+
+    combined_df = pd.concat(dataframes)
+    combined_df.to_csv(output_file, index=False)
+
+
+
+#game of thrones API to retrieve pictures
+def got_api():
+    url = "https://game-of-thrones1.p.rapidapi.com/Characters"
+
+    headers = {
+        "X-RapidAPI-Key": os.environ.get('RAPIDAPI_KEY'),
+        "X-RapidAPI-Host": os.environ.get('RAPIDAPI_HOST')
+    }
+
+    response = requests.request("GET", url, headers=headers)
+
+    if response.status_code == 200:
+        data = json.loads(response.text)
+        with open('data/game_of_thrones_characters.json', 'w') as f:
+            json.dump(data, f)
+        return data
+    else:
+        print(f"Error: {response.status_code} - {response.text}")
+        return None

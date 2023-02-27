@@ -1,11 +1,11 @@
-name,avg_polarity,num_sentences
-radzal mo eraz,0.4512600000000001,10
-maester aemon,0.2541142857142857,7
-margaery tyrell,0.22291562499999992,64
-petyr baelish,0.1794906976744186,43
-olyvar,0.17338571428571428,7
-torturer,0.16706666666666667,9
-walder,0.1499875,24
-hot pie,0.13698,10
-loras,0.1350631578947368,19
-guard,0.1337625,8
+season,name,avg_polarity,num_sentences
+season_3,radzal mo eraz,0.4512600000000001,10
+season_3,maester aemon,0.2541142857142857,7
+season_3,margaery tyrell,0.22291562499999992,64
+season_3,petyr baelish,0.1794906976744186,43
+season_3,olyvar,0.17338571428571428,7
+season_3,torturer,0.16706666666666667,9
+season_3,walder,0.1499875,24
+season_3,hot pie,0.13698,10
+season_3,loras,0.1350631578947368,19
+season_3,guard,0.1337625,8
