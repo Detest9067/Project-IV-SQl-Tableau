@@ -15,8 +15,8 @@ The aim of this project is to practice data extraction, trimming, and loading in
 * [Game of Thrones Script CSV](https://www.kaggle.com/datasets/albenft/game-of-thrones-script-all-seasons) 
 * Game of Thrones [RapidAPI](https://rapidapi.com/mrmalinsky08-MHGsijNPHM/api/game-of-thrones1/)
 
-### Data Manipulation
-The code in the src.py file contains the functions necessary to prepare the data for the Tableau visualizations. For each season, I extracted the average polarity per character. Once that was established, I looked at the top 10 most positive/negative characters and exported them to a separate csv for visualization.
+### Data Manipulation/Extraction
+The code in the src.py file contains the functions necessary to prepare the data for the Tableau visualizations. For each season, I extracted the average polarity per character. Once that was established, I looked at the top 10 most positive/negative characters and exported them to a separate csv for visualization. </br></br>There is also an image scraper, which goes through the URLs of the Game of Thrones JSON file (from the API) and downloads all of the images
 
 ### Key points
 * The data includes the top 10 most positive/negative characters

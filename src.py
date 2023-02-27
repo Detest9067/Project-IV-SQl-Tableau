@@ -104,12 +104,14 @@ def got_api():
         "X-RapidAPI-Key": os.environ.get('RAPIDAPI_KEY'),
         "X-RapidAPI-Host": os.environ.get('RAPIDAPI_HOST')
     }
-
+    params = {
+    "fields": "firstName,lastName,imageUrl"
+    }   
     response = requests.request("GET", url, headers=headers)
 
     if response.status_code == 200:
         data = json.loads(response.text)
-        with open('data/game_of_thrones_characters.json', 'w') as f:
+        with open('images/game_of_thrones_characters.json', 'w') as f:
             json.dump(data, f)
         return data
     else:
