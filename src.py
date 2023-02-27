@@ -80,7 +80,7 @@ def bottom_characters(season):
         bottom_df.to_csv(f"data/bottom_characters_{season}.csv", index=False)
         return bottom_df
 
-
+#combining all top/bottom characters into one csv for easy visualizing
 def combine_csvs(folder_path, output_file, exclude_file=None):
     
     csv_files = glob.glob(f'{folder_path}/*.csv')
@@ -94,6 +94,33 @@ def combine_csvs(folder_path, output_file, exclude_file=None):
     combined_df = pd.concat(dataframes)
     combined_df.to_csv(output_file, index=False)
 
+#extracting a csv for each significant house
+# def extract_house(house_name):
+    
+#     with engine.connect() as conn:
+#         query = f"SELECT * FROM script WHERE Name LIKE '%%{house_name}%%'"
+#         df = pd.read_sql(query, conn)
+#         sia = SentimentIntensityAnalyzer()
+#         df['polarity_score'] = df['Sentence'].apply(lambda x: sia.polarity_scores(x)['compound'])
+#         df = df[['Name', 'polarity_score']]
+#         df = df.groupby(['Name']).mean()
+#         table_name = house_name.lower()
+#         df.to_csv(f"house/{house_name}.csv", index=True)
+#         df.to_sql(table_name, conn, if_exists='replace', dtype={'Name': alch.types.String(255)})
+def extract_house(house_name):
+    with engine.connect() as conn:
+        query = f"SELECT * FROM script WHERE Name LIKE '%%{house_name}%%'"
+        df = pd.read_sql(query, conn)
+        sia = SentimentIntensityAnalyzer()
+        df['polarity_score'] = df['Sentence'].apply(lambda x: sia.polarity_scores(x)['compound'])
+        df['house_name'] = house_name
+        df = df[['house_name', 'Name', 'polarity_score']]
+        df = df.groupby(['house_name', 'Name']).mean()
+        table_name = house_name.lower()
+        df.to_csv(f"house/{house_name}.csv", index=True)
+        df.to_sql(table_name, conn, if_exists='replace', dtype={'Name': alch.types.String(255), 'house_name': alch.types.String(255)})
+
+        
 
 
 #game of thrones API to retrieve pictures

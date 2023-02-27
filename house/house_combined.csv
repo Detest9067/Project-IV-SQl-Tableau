@@ -1,0 +1,67 @@
+house_name,Name,polarity_score
+lannister,cersei lannister,0.0098944278606965
+lannister,jaime lannister,-0.0040603174603174
+lannister,joffrey lannister,0.0295765873015873
+lannister,kevan lannister,0.0442888888888888
+lannister,lancel lannister,0.1635571428571428
+lannister,lannister scout,0.31845
+lannister,lannister soldier,0.0
+lannister,tommen lannister,0.0282876033057851
+lannister,tyrion lannister,0.0308692613636363
+lannister,tywin lannister,-0.0014524934383202
+baratheon,gendry baratheon,-0.0216463768115942
+baratheon,myrcella baratheon,-0.5994
+baratheon,renly baratheon,-0.0037837209302325
+baratheon,robert baratheon,-0.0266
+baratheon,stannis baratheon,-0.0246962837837837
+targaryen,daenerys targaryen,0.0214545801526717
+targaryen,viserys targaryen,0.0334153846153846
+stark,arya stark,-0.0435130268199233
+stark,benjen stark,0.1530307692307692
+stark,bran stark,-0.0217423558897243
+stark,catelyn stark,-0.0140814035087719
+stark,eddard stark,0.0280031700288184
+stark,eddark stark,0.17
+stark,karstark,0.0
+stark,lord karstark,0.099975
+stark,rickard karstark,-0.242159375
+stark,rickon stark,-0.1143
+stark,robb stark,-0.0166856209150326
+stark,sansa stark,0.0129815051020408
+stark,several stark bannermen,0.0
+stark,stark bannermen,0.0
+stark,stark guard,0.1060666666666666
+stark,steward of house stark,0.0
+,cersei lannister,0.0098944278606965
+,jaime lannister,-0.0040603174603174
+,joffrey lannister,0.0295765873015873
+,kevan lannister,0.0442888888888888
+,lancel lannister,0.1635571428571428
+,lannister scout,0.31845
+,lannister soldier,0.0
+,tommen lannister,0.0282876033057851
+,tyrion lannister,0.0308692613636363
+,tywin lannister,-0.0014524934383202
+,gendry baratheon,-0.0216463768115942
+,myrcella baratheon,-0.5994
+,renly baratheon,-0.0037837209302325
+,robert baratheon,-0.0266
+,stannis baratheon,-0.0246962837837837
+,daenerys targaryen,0.0214545801526717
+,viserys targaryen,0.0334153846153846
+,arya stark,-0.0435130268199233
+,benjen stark,0.1530307692307692
+,bran stark,-0.0217423558897243
+,catelyn stark,-0.0140814035087719
+,eddard stark,0.0280031700288184
+,eddark stark,0.17
+,karstark,0.0
+,lord karstark,0.099975
+,rickard karstark,-0.242159375
+,rickon stark,-0.1143
+,robb stark,-0.0166856209150326
+,sansa stark,0.0129815051020408
+,several stark bannermen,0.0
+,stark bannermen,0.0
+,stark guard,0.1060666666666666
+,steward of house stark,0.0
