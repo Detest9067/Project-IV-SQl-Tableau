@@ -95,18 +95,6 @@ def combine_csvs(folder_path, output_file, exclude_file=None):
     combined_df.to_csv(output_file, index=False)
 
 #extracting a csv for each significant house
-# def extract_house(house_name):
-    
-#     with engine.connect() as conn:
-#         query = f"SELECT * FROM script WHERE Name LIKE '%%{house_name}%%'"
-#         df = pd.read_sql(query, conn)
-#         sia = SentimentIntensityAnalyzer()
-#         df['polarity_score'] = df['Sentence'].apply(lambda x: sia.polarity_scores(x)['compound'])
-#         df = df[['Name', 'polarity_score']]
-#         df = df.groupby(['Name']).mean()
-#         table_name = house_name.lower()
-#         df.to_csv(f"house/{house_name}.csv", index=True)
-#         df.to_sql(table_name, conn, if_exists='replace', dtype={'Name': alch.types.String(255)})
 def extract_house(house_name):
     with engine.connect() as conn:
         query = f"SELECT * FROM script WHERE Name LIKE '%%{house_name}%%'"
